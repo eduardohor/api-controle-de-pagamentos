@@ -12,6 +12,10 @@ class RemetenteController extends Controller
     {
         $apiNotasFiscais = ApiNotasFiscais::get('api/ps/notas')->json();
 
-        return response()->json($apiNotasFiscais, 200);
+        $cnpjRemetentes = array_unique(array_column($apiNotasFiscais, 'cnpj_remete'));
+
+        $test = array_fill_keys($cnpjRemetentes, $apiNotasFiscais);
+  
+        return response()->json($test, 200);
     }
 }
