@@ -1,0 +1,32 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Test Azapfy",
+        "contact": {
+            "email": "eduardo.hor@outlook.com"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/remetentes": {
+            "get": {
+                "tags": [
+                    "Remetentes"
+                ],
+                "summary": "Retorna notas fiscais dos remetentes",
+                "description": "Este endpoint retorna as notas ficais por remetentes, com parâmetros de valores no final",
+                "operationId": "97001022d688ca58357494715d52c419",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

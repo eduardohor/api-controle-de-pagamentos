@@ -5,8 +5,34 @@ namespace App\Http\Controllers;
 use App\Facades\ApiNotasFiscais;
 use DateTime;
 
+/**
+ * @OA\Info(
+ *   title="API Test Azapfy",
+ *   version="1.0.0",
+ *   contact={
+ *     "email": "eduardo.hor@outlook.com"
+ *   }
+ * )
+ */
+
 class RemetenteController extends Controller
 {
+
+ /**
+	 * @OA\Get(
+	 *      tags={"Remetentes"},
+	 *      summary="Retorna notas fiscais dos remetentes",
+	 *      description="Este endpoint retorna as notas ficais por remetentes, com parâmetros de valores no final",
+	 *      path="/api/remetentes",
+	 * 			 @OA\Response(
+	 *          response=200,
+	 *          description="",
+	 *          @OA\JsonContent()
+	 *     ),
+	 * 
+	 
+	 * )
+	 */
 
     public function index()
     {
