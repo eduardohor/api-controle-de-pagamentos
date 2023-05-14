@@ -13,8 +13,15 @@ class RemetenteController extends Controller
 
         $remetentesCollection = collect($notasFiscais);
 
-        $notasRemententes = $remetentesCollection->groupBy('cnpj_remete');
-
-        return response()->json($notasRemententes, 200);
+        $notasPorRemententes = $remetentesCollection
+            ->groupBy('cnpj_remete')
+            ->map(function ($notas) {
+               
+                $notas['valor_total_notas'] = strval($notas->sum('valor'));
+                         
+                return $notas;
+            });
+   
+        return response()->json($notasPorRemententes, 200);
     }
 }
