@@ -29,12 +29,6 @@ composer install
 php artisan serve
 ```
 
-- Verificar se a aplicação está online acessando
-
-```sh
-http://localhost:8000
-```
-
 - Gerar documentação com Swagger
 
 ```sh
