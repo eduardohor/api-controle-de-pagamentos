@@ -23,16 +23,16 @@ cd api-controle-de-pagamentos
 composer install
 ```
 
-- Subir o servidor
-
-```sh
-php artisan serve
-```
-
 - Gerar documentação com Swagger
 
 ```sh
 php artisan swagger
+```
+
+- Subir o servidor
+
+```sh
+php artisan serve
 ```
 
  - Acessar documentação com Swagger
