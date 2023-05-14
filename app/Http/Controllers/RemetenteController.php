@@ -18,21 +18,44 @@ use DateTime;
 class RemetenteController extends Controller
 {
 
- /**
-	 * @OA\Get(
-	 *      tags={"Remetentes"},
-	 *      summary="Retorna notas fiscais dos remetentes",
-	 *      description="Este endpoint retorna as notas ficais por remetentes, com parâmetros de valores no final",
-	 *      path="/api/remetentes",
-	 * 			 @OA\Response(
-	 *          response=200,
-	 *          description="",
-	 *          @OA\JsonContent()
-	 *     ),
-	 * 
-	 
-	 * )
-	 */
+    /**
+     * @OA\Get(
+     *      tags={"Remetentes"},
+     *      summary="Retorna notas fiscais dos remetentes",
+     *      description="Este endpoint retorna as notas ficais organizadas pelo cnpj dos remetentes. No parâmetro valores é encontrado os calculos dos valores a receber pelo remetente",
+     *      path="/api/remetentes",
+     * 			 @OA\Response(
+     *          response=200,
+     *          description="Notas Fiscais Remetentes",
+     *          @OA\JsonContent(
+     *              type="object",
+     *              @OA\Property(property="chave", type="string", example="11112222333444555566677788889"),
+     *              @OA\Property(property="numero", type="string", example="123456789"),
+     *              @OA\Property(property="dest", type="string", example="11112222333444555566677788889"),
+     *              @OA\Property(property="cnpj_remete", type="string", example="11223344556678"),
+     *              @OA\Property(property="nome_remete", type="string", example="PEREIRA PECAS LTDA"),
+     *              @OA\Property(property="nome_transp", type="string", example="PEREIRA TRANSPORTE"),
+     *              @OA\Property(property="cnpj_transp", type="string", example="11223344556678"),
+     *              @OA\Property(property="status", type="string", example="COMPROVADO"),
+     *              @OA\Property(property="valor", type="string", example="100.00"),
+     *              @OA\Property(property="volumes", type="string", example="10"),
+     *              @OA\Property(property="dt_emis", type="date", example="2023-03-13T17:33:25.000000Z"),
+     *              @OA\Property(property="dt_entrega", type="date", example="2023-03-13T17:33:25.000000Z"),
+     *              @OA\Property(property="valores", type="array",
+     *                   @OA\Items(
+     *                        @OA\property(property="valor_total_notas",type="string", example="100.00" ), 
+     *                        @OA\property(property="valor_receber_entregue",type="string", example="100.00"),
+     *                        @OA\property(property="valor_receber_nao_entregue",type="string", example="100.00"),
+     *                        @OA\property(property="valor_atraso",type="string", example="100.00")
+     *                   )),
+     * 
+     *              ),
+     *     ),
+     *          @OA\Response(
+     *              response=400, description="Bad Request"
+     *          )
+     * )
+     */
 
     public function index()
     {
@@ -80,7 +103,7 @@ class RemetenteController extends Controller
                 ];
 
                 $notas['valores'] = $valores;
-                
+
                 return $notas;
             });
 

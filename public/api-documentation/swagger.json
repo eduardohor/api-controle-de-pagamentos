@@ -14,16 +14,97 @@
                     "Remetentes"
                 ],
                 "summary": "Retorna notas fiscais dos remetentes",
-                "description": "Este endpoint retorna as notas ficais por remetentes, com parâmetros de valores no final",
+                "description": "Este endpoint retorna as notas ficais organizadas pelo cnpj dos remetentes. No parâmetro valores é encontrado os calculos dos valores a receber pelo remetente",
                 "operationId": "97001022d688ca58357494715d52c419",
                 "responses": {
                     "200": {
-                        "description": "",
+                        "description": "Notas Fiscais Remetentes",
                         "content": {
                             "application/json": {
-                                "schema": {}
+                                "schema": {
+                                    "properties": {
+                                        "chave": {
+                                            "type": "string",
+                                            "example": "11112222333444555566677788889"
+                                        },
+                                        "numero": {
+                                            "type": "string",
+                                            "example": "123456789"
+                                        },
+                                        "dest": {
+                                            "type": "string",
+                                            "example": "11112222333444555566677788889"
+                                        },
+                                        "cnpj_remete": {
+                                            "type": "string",
+                                            "example": "11223344556678"
+                                        },
+                                        "nome_remete": {
+                                            "type": "string",
+                                            "example": "PEREIRA PECAS LTDA"
+                                        },
+                                        "nome_transp": {
+                                            "type": "string",
+                                            "example": "PEREIRA TRANSPORTE"
+                                        },
+                                        "cnpj_transp": {
+                                            "type": "string",
+                                            "example": "11223344556678"
+                                        },
+                                        "status": {
+                                            "type": "string",
+                                            "example": "COMPROVADO"
+                                        },
+                                        "valor": {
+                                            "type": "string",
+                                            "example": "100.00"
+                                        },
+                                        "volumes": {
+                                            "type": "string",
+                                            "example": "10"
+                                        },
+                                        "dt_emis": {
+                                            "type": "string",
+                                            "format": "date",
+                                            "example": "2023-03-13T17:33:25.000000Z"
+                                        },
+                                        "dt_entrega": {
+                                            "type": "string",
+                                            "format": "date",
+                                            "example": "2023-03-13T17:33:25.000000Z"
+                                        },
+                                        "valores": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "valor_total_notas": {
+                                                        "type": "string",
+                                                        "example": "100.00"
+                                                    },
+                                                    "valor_receber_entregue": {
+                                                        "type": "string",
+                                                        "example": "100.00"
+                                                    },
+                                                    "valor_receber_nao_entregue": {
+                                                        "type": "string",
+                                                        "example": "100.00"
+                                                    },
+                                                    "valor_atraso": {
+                                                        "type": "string",
+                                                        "example": "100.00"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
                             }
                         }
+                    },
+                    "400": {
+                        "description": "Bad Request"
                     }
                 }
             }
